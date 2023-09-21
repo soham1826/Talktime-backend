@@ -49,7 +49,7 @@ export const getUserPosts = async(req,res)=>{
         const {userId} = req.params;
         const post = await Post.find({userId});
         const newPost = await post.reverse();
-        res.status(200).json(newPostost);
+        res.status(200).json(newPost);
         
     } catch (err) {
         res.status(404).json({message:err.message})
@@ -77,9 +77,9 @@ export const likePost = async (req, res) => {
         { likes: post.likes },
         { new: true }
       );
-      newPosts = await updatedPost.reverse()
+      const newPost = await updatedPost.reverse()
   
-      res.status(200).json(newPosts);
+      res.status(200).json(newPost);
     } catch (err) {
       res.status(404).json({ message: err.message });
     }
